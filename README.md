@@ -28,6 +28,7 @@ graph TD
     F -->|Yes| G[Final Answer]
     F -->|No| B
     G --> H[Response with Citations]
+```
 
 ## 🚀 Quick Start
 
