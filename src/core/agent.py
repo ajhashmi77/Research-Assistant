@@ -1,22 +1,23 @@
 from typing import Dict
-from .rag import ingest_documents  # Your existing RAG functions
+from .rag import RAGSystem
 
 class ResearchAgent:
     def __init__(self):
-        self.vectorstore = None
+        self.rag = RAGSystem()
         
     def initialize(self):
         """Initialize RAG system"""
-        self.vectorstore = ingest_documents()
+        self.rag.ingest_documents()
         
     def query(self, question: str) -> Dict:
-        """Core research functionality"""
-        if not self.vectorstore:
+        if not self.rag.vectorstore:
             self.initialize()
-            
+        
+        retrieved_docs = self.rag.retrieve_documents(question)
+        
         return {
             "question": question,
-            "answer": "",  # Your implementation
-            "sources": [],
-            "confidence": 0.0
+            "answer": f"Found {len(retrieved_docs)} relevant document chunks",
+            "sources": [str(doc.metadata) for doc in retrieved_docs] if retrieved_docs and hasattr(retrieved_docs[0], 'metadata') else [],
+            "confidence": min(0.9, 0.3 + len(retrieved_docs) * 0.2)
         }
