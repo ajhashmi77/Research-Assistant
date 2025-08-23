@@ -1,0 +1,9 @@
+AI Ethics Guidelines
+
+1. Transparency: AI systems should be explainable and understandable.
+2. Fairness: Algorithms should avoid bias and discrimination.
+3. Privacy: User data must be protected and used ethically.
+4. Accountability: Humans remain responsible for AI decisions.
+5. Safety: AI systems should be secure and reliable.
+
+These principles guide responsible AI development and deployment.
