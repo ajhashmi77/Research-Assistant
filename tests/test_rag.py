@@ -1,12 +1,14 @@
 from src.core.agent import ResearchAgent
 
-def test_rag():
+def test_hybrid_research():
     agent = ResearchAgent()
-    result = agent.query("What are AI ethics principles?")
+    result = agent.query("AI ethics principles")
+    
     print("Question:", result["question"])
     print("Answer:", result["answer"])
-    print("Sources:", result["sources"][:1])
+    print("Document sources:", len(result["sources"]["documents"]))
+    print("Web sources:", len(result["sources"]["web"]))
     print("Confidence:", result["confidence"])
 
 if __name__ == "__main__":
-    test_rag()
+    test_hybrid_research()
